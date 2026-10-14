@@ -25,3 +25,8 @@ nsis:
   perMachine: false
   createDesktopShortcut: true
   createStartMenuShortcut: true
+
+publish:
+  provider: github
+  owner: Rodjon147
+  repo: update-lab

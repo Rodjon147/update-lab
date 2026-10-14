@@ -36,8 +36,8 @@ npx electron .
 ## Roadmap
 
 - [x] Electron + React application
-- [ ] Windows NSIS installer
-- [ ] GitHub Releases
+- [x] Windows NSIS installer
+- [x] GitHub Releases
 - [ ] Automatic updates
 - [ ] GitHub Actions CI/CD
 
