@@ -1,14 +1,16 @@
 {
   "name": "update-lab",
   "private": true,
-  "version": "0.0.0",
-  "main":"electron/main.cjs",
+  "version": "1.0.0",
+  "main": "electron/main.cjs",
+  "description":"Electron React NSIS update learning project",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dist:win":"npm run build && electron-builder --win nsis --x64 --publish never"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -20,6 +22,7 @@
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "electron": "^44.7.2",
+    "electron-builder": "^26.15.3",
     "eslint": "^10.10.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",
