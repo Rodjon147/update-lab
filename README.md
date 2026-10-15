@@ -10,8 +10,8 @@ through GitHub Releases.
 - Electron
 - React
 - Vite
-- electron-builder (planned)
-- electron-updater (planned)
+- electron-builder
+- electron-updater
 
 ## Development
 
