@@ -38,7 +38,7 @@ npx electron .
 - [x] Electron + React application
 - [x] Windows NSIS installer
 - [x] GitHub Releases
-- [ ] Automatic updates
+- [x] Automatic updates
 - [ ] GitHub Actions CI/CD
 
 ## Status
