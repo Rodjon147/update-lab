@@ -39,7 +39,7 @@ npx electron .
 - [x] Windows NSIS installer
 - [x] GitHub Releases
 - [x] Automatic updates
-- [ ] GitHub Actions CI/CD
+- [x] GitHub Actions CI/CD
 
 ## Status
 
