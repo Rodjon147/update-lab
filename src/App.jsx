@@ -82,6 +82,8 @@ useEffect(() => {
 
       <p>Учебный проект Electron + React + NSIS</p>
 
+      <p>✨ Это сообщение появилось благодаря OTA-обновлению!</p>
+
       <section className="updates">
         <h3>Центр обновлений</h3>
 
