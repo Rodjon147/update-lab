@@ -44,7 +44,48 @@ jobs:
       - name: Build React
         run: npm run build
 
-      - name: Build NSIS and upload release files
-        run: npx electron-builder --win nsis --x64 --publish always
+      
+      - name: Build NSIS locally
+        run: npx electron-builder --win nsis --x64 --publish never
+
+      - name: Create one draft release
+        shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          $version = node -p "require('./package.json').version"
+
+          $installer = "release/Update-Lab-Setup-$version.exe"
+          $metadata = "release/latest.yml"
+          $blockmap = "$installer.blockmap"
+
+          if (!(Test-Path $installer) -or !(Test-Path $metadata)) {
+            throw "Missing installer or latest.yml"
+          }
+
+          if (!(Select-String -Path $metadata -Pattern "^version: $([regex]::Escape($version))$" -Quiet)) {
+            throw "latest.yml version mismatch"
+          }
+
+          gh release view $env:RELEASE_TAG --json id 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            throw "Release already exists: $env:RELEASE_TAG"
+          }
+
+          $assets = @($installer, $metadata)
+
+          if (Test-Path $blockmap) {
+            $assets += $blockmap
+          }
+
+          gh release create $env:RELEASE_TAG @assets `
+            --draft `
+            --verify-tag `
+            --title "Update Lab $env:RELEASE_TAG" `
+            --notes "Automated Windows x64 NSIS release."
+
+          if ($LASTEXITCODE -ne 0) {
+            throw "Release creation failed"
+          }
+
