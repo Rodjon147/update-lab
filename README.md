@@ -44,3 +44,8 @@ npx electron .
 ## Status
 
 Educational project under active development.
+
+## Development workflow
+
+All changes are reviewed through Pull Requests
+and checked by GitHub Actions.
